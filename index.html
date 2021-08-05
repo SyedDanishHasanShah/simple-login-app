@@ -16,6 +16,11 @@
         <h1 class="header__heading">Simple Login Form</h1>
     </header>
     <main class="main-content">
+        <div class="modal hidden">
+            <button class="modal__close">&times;</button>
+            <h1 class="modal__heading"></h1>
+        </div>
+        <div class="overlay hidden"></div>
             <form class="main-content__form" method="POST" onsubmit="return false">
                 <div class="form__grouping">
                     <label for="email" class="form__label form__label-email">Email:</label>
@@ -23,7 +28,7 @@
                 </div>
                 <div class="form__grouping">
                     <label for="password" class="form__label form__label-password">Password:</label>
-                    <input class="form__input" type="password" id="password" placeholder="***********">
+                    <input title="Password must have a minimum of 8 characters, and must contain one capital letter, one small letter, one numeric letter, and one symbolic letter." class="form__input" type="password" id="password" placeholder="***********">
                 </div>
                 <div class="form__grouping">
                     <input class="submit-button" type="submit" value="Login">
