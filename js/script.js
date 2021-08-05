@@ -22,10 +22,19 @@ submitButton.addEventListener('click', function() {
         modalHeading.innerHTML = 'Login failed!';
         openModal();
         if (!isValidEmail) {
+            const errorMessage = document.createElement('p');
+            errorMessage.classList.add('error-message-email');
+            modalHeading.innerHTML += ' Email is invalid!';
+            errorMessage.innerHTML = "Email does not match the accepted syntax!";
+            email.parentElement.insertBefore(errorMessage, email.nextSibling);
             email.classList.add('input--invalid');
         }
         if (!isValidPassword) {
-            console.log("hello");
+            modalHeading.innerHTML += ' Password does not match the given criteria!';
+            const errorMessage = document.createElement('p');
+            errorMessage.classList.add('error-message-password');
+            errorMessage.innerHTML = "Password does not match the given criteria!";
+            password.parentElement.insertBefore(errorMessage, password.nextSibling);
             password.classList.add('input--invalid');
         }
     }
@@ -33,9 +42,20 @@ submitButton.addEventListener('click', function() {
     password.value = '';
 })
 
-email.addEventListener('keydown', () => changeBorderToNormal(email));
+email.addEventListener('keydown', () => {
+    changeBorderToNormal(email);
+    if (document.querySelector('.error-message-email')) {
+        email.parentNode.removeChild(document.querySelector('.error-message-email'));
+    }
 
-password.addEventListener('keydown', () => changeBorderToNormal(password));
+});
+
+password.addEventListener('keydown', () => {
+    changeBorderToNormal(password);
+    if (document.querySelector('.error-message-password')) {
+        password.parentNode.removeChild(document.querySelector('.error-message-password'));
+    }
+});
 
 modalClose.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);

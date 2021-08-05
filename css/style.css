@@ -131,6 +131,12 @@ body {
     border: 2px solid black;
 }
 
+.error-message-email, 
+.error-message-password {
+    color: red;
+    margin-top: 1rem;
+}
+
 .submit-button {
     text-transform: uppercase;
     background: linear-gradient(left,  #d42b1f, #1dbb6c);
